@@ -5,7 +5,7 @@ import Pano from './Pano'
 function Viewer() {
   return (
     <div className="Viewer">
-      <Pano />
+      <Pano img_id="11" />
     </div>
   );
 }
