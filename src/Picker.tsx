@@ -7,6 +7,23 @@ const config_path = "config/";
 
 // this is intentionally flipped
 const convertPoint = ({ x, y }: { x: number, y: number }) => { return { lat: x, lng: y } }
+const points = (dist) => {
+    var threshold = 160;
+    var max_score = 500;
+    var step = 160;
+    var unit = 50;
+    if (dist < threshold) {
+        return max_score;
+    }
+    else {
+        var c = unit / step;
+        var neglin = (1 / unit) * (max_score + unit - c*x);
+        if(dist < 0) {
+            neglin = 0;
+        }
+        return unit * Math.floor(neglin);
+    }
+}
 
 export default class Picker extends React.Component<{ img_id: string }, {
     inner: any, loc: {
@@ -17,22 +34,6 @@ export default class Picker extends React.Component<{ img_id: string }, {
         lng: number;
     }
 }> {
-    constructor(props) {
-        super(props)
-        fetch(`/json/${props.img_id
-            }.json`)
-            .then(data =>
-                data.json()
-            ).then(data => {
-                console.log(`ans: (${data.loc.lat}, ${data.loc.lng})`);
-                this.state = {
-                    loc: umd,
-                    inner: null!!,
-                    ans: convertPoint(data.loc)
-                }
-            })
-    }
-
     render(): React.ReactNode {
         return (<>
             <div id="picker" className="Picker" />
@@ -40,39 +41,28 @@ export default class Picker extends React.Component<{ img_id: string }, {
                 // this.setState({ loc: this.state.inner.getMarkerPosition() })
                 // alert(`${this.state.loc.lat}, ${this.state.loc.lng}`)
                 console.log(`loc: (${this.state.loc.lat}, ${this.state.loc.lng})`)
-                const dist = google.maps.geometry.spherical.computeDistanceBetween(umd, this.state.loc)
-                alert(dist)
+                const dist = google.maps.geometry.spherical.computeDistanceBetween(this.state.ans, this.state.loc)
+                alert("Points: " + points(dist));
             }}>Confirm Position</button>
         </>);
     }
-
-    points(dist) {
-        var threshold = 160;
-        var max_score = 500;
-        var step = 160;
-        var unit = 50;
-        if (dist < threshold) {
-            return max_score;
-        }
-        else {
-            var c = unit / step;
-            var neglin = (1 / unit) * (max_score + unit - c*x);
-            if(dist < 0) {
-                neglin = 0;
-            }
-            return unit * Math.floor(neglin);
-        }
-    }
     
-    componentDidMount() {
+    async componentDidMount() {
         console.log(`umd:(${umd.lat}, ${umd.lng})`);
         const inner = new google.maps.Map(document.getElementById("picker"), {
             zoom: 15,
             center: umd,
             streetViewControl: false,
         });
+        const fetched = await fetch(`/json/${this.props.img_id
+            }.json`)
+        const data = await fetched.json()
+        console.log(`ans: (${data.loc.lat}, ${data.loc.lng})`);
+
         this.setState({
             inner: inner,
+            ans: convertPoint(data.loc),
+            loc: umd,
         })
         inner.addListener("click", (mapsMouseEvent) => {
             console.log(`click: (${mapsMouseEvent.latLng.lat()} ${mapsMouseEvent.latLng.lng()})`)
