@@ -18,9 +18,9 @@ export default function Landing() {
         <div className="topbar">
             <img src="photos/maryland.svg"/>
         </div>
-        <div className="container">
+        <div className="contained">
             <img src={src} alt="Blurry scene of unknown umd scene"/>
-            <button onClick={coursesPage}>PLAY!</button>
+            <button class="button" onClick={coursesPage}>PLAY!</button>
         </div>
     </div>);
     //navigate("./Play")

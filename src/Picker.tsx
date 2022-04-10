@@ -18,15 +18,10 @@ export default class Picker extends React.Component<{}, {
         }
     }
 
-    onSubmit() {
-        this.setState({ loc: this.state.inner.getMarkerPosition() })
-        alert(`${this.state.loc.lat}, ${this.state.loc.lng}`)
-    }
-
     render(): React.ReactNode {
         return (<>
-            <div id="picker" className="Picker" />
-            <button onClick={() => this.onSubmit()}>Confirm Position</button>
+            <div id="picker"/>
+            <button id="picker" onClick={() => this.setState({ loc: this.state.inner.getMarkerPosition() })}>Confirm Position</button>
         </>);
     }
 

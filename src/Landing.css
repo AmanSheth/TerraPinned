@@ -20,12 +20,12 @@
     z-index: 2
 }
 
-.container {
+.contained {
     position: relative;
     width: 50%;
 }
 
-.container button {
+.contained .button {
     position: absolute;
     left: 100%;
     top: 50%;
@@ -41,7 +41,7 @@
     font-family: fantasy;
 }
 
-.container img {
+.contained img {
     max-width: 200%;
     height: auto;
     filter: blur(10px);
