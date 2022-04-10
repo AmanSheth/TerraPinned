@@ -2,19 +2,25 @@
 #picker div {
     position: fixed;
     left: 5%; 
-    bottom: 5%;
+    bottom: 10%;
     width: 200px;
     height:200px;
     background-color:lightblue;
     padding: 5px;
 }
 
-#picker button {
+button {
     position: fixed;
-    left: 20%; 
-    bottom: 5%;
-    width: 100px;
-    height:50px;
-    background-color:lightblue;
-    padding: 5px;
+    left: 40%; 
+    bottom: 10%;
+    width: 200px;
+    height: 100px;
+    background-color: #FFCD23;
+    color: white;
+    font-size: 24px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: fantasy;
 }

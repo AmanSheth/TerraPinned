@@ -34,7 +34,7 @@ export default class Picker extends React.Component<{ img_id: string }, {
     render(): React.ReactNode {
         return (<>
             <div id="picker" className="Picker" />
-            <button onClick={() => {
+            <button className="square" onClick={() => {
                 this.setState({ loc: this.state.inner.getMarkerPosition() })
                 // alert(`${this.state.loc.lat}, ${this.state.loc.lng}`)
                 const dist = google.maps.geometry.spherical.computeDistanceBetween(this.state.ans, this.state.loc)
