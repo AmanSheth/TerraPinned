@@ -7,7 +7,7 @@ const config_path = "config/";
 const convertPoint = ({ x, y }) => ({ lat: y, lng: x })
 
 
-export default class Picker extends React.Component<{ id: string }, {
+export default class Picker extends React.Component<{ img_id: string }, {
     inner: LocationPicker, loc: {
         lat: number;
         lng: number;
@@ -18,10 +18,11 @@ export default class Picker extends React.Component<{ id: string }, {
 }> {
     constructor(props) {
         super(props)
-        fetch(`/config/${props.id}.json`)
-            .then(data => {
+        fetch(`/json/${props.img_id
+            }.json`)
+            .then(data =>
                 data.json()
-            }).then(data => {
+            ).then(data => {
                 this.state = {
                     loc: umd,
                     inner: null!!,
@@ -30,17 +31,15 @@ export default class Picker extends React.Component<{ id: string }, {
             })
     }
 
-    onSubmit() {
-        this.setState({ loc: this.state.inner.getMarkerPosition() })
-        // alert(`${this.state.loc.lat}, ${this.state.loc.lng}`)
-        const dist = google.maps.geometry.spherical.computeDistanceBetween(this.state.ans, this.state.loc)
-        alert(dist)
-    }
-
     render(): React.ReactNode {
         return (<>
             <div id="picker" className="Picker" />
-            <button onClick={() => this.onSubmit()}>Confirm Position</button>
+            <button onClick={() => {
+                this.setState({ loc: this.state.inner.getMarkerPosition() })
+                // alert(`${this.state.loc.lat}, ${this.state.loc.lng}`)
+                const dist = google.maps.geometry.spherical.computeDistanceBetween(this.state.ans, this.state.loc)
+                alert(dist)
+            }}>Confirm Position</button>
         </>);
     }
 
@@ -57,5 +56,6 @@ export default class Picker extends React.Component<{ id: string }, {
             }),
             loc: umd
         })
+        console.log("set picker innner")
     }
 }
