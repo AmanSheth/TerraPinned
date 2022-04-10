@@ -3,8 +3,10 @@ import React from 'react'
 
 const Pano = (props) => {
 
-  const [panorama, setPano] = React.useState(new PANOLENS.ImagePanorama(`photos/${props.img_id
-    }.jpg`));
+  let src = "https://terpconnect.umd.edu/~vchari/geomd/" + props.img_id + ".jpg"
+  alert(src)
+  const [panorama, setPano] = React.useState(new PANOLENS.ImagePanorama(src));
+  
 
   const [viewer, setViewer] = React.useState(new PANOLENS.Viewer({
     container: document.querySelector(`#viewer_${props.img_id}`)

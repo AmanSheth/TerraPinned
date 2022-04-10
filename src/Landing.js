@@ -1,3 +1,4 @@
+import { findAllInRenderedTree } from 'react-dom/test-utils';
 import {useNavigate} from 'react-router-dom';
 import './Landing.css';
 import Play from './Play';
@@ -8,14 +9,14 @@ export default function Landing() {
         navigate("/play")
     }
     let random = Math.floor(Math.random() * 19);
-  //  if(random === 3 || random === 5  || random === 6)
-  //  {
-  //    random += 4;
-   // } 
-    let src = ".\\photos\\" + random.toString() + ".jpg"
+    if(random === 3 || random === 5  || random === 6)
+    {
+      random += 4;
+    } 
+    let src = "https://terpconnect.umd.edu/~vchari/geomd/" + random.toString() + ".jpg"
     return (<div>
-        <div class="topbar">
-            <img src="\photos\maryland.svg"/>
+        <div className="topbar">
+            <img src="photos/maryland.svg"/>
         </div>
         <div className="container">
             <img src={src} alt="Blurry scene of unknown umd scene"/>

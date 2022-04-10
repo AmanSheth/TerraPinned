@@ -1,16 +1,14 @@
 // import logo from './logo.svg';
 import './Landing.css';
-import Pano from './Pano'
 import Viewer from './Viewer'
 
 function Play() {
   return (
     <div>
-        <div class="topbar">
-            <a class="button" href="blank.html">ABOUT</a>
-            <a class="button" href="blank.html">CONTACT</a>
+        <div className="topbar">
+          <img src="photos/maryland.svg"/>
         </div>
-        <div class="container">
+        <div className="container">
           <Viewer></Viewer>
         </div>
     </div>
