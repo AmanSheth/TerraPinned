@@ -1,12 +1,16 @@
-coord = map(float, input().split(", "))
+import json as js 
+coord = [float(i) for i in input().split(", ")]
 id = input()
 
-line = r""" {
-  \"id\": #{str(id)},
-  \"loc\": {
-    \"x\": #{str(coord[0])},
-    \"y\": #{str(coord[1])},
+dictionary = {
+  "id":int(id),
+  "loc": {
+    "x": coord[0],
+    "y": coord[1]
   }
-}"""
+}
 
-print(line)
+json_object = js.dumps(dictionary)
+
+with open("public/jsons/" + str(id) + ".json", "w") as f:
+  f.write(json_object)
