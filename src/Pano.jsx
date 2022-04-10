@@ -1,20 +1,19 @@
 import * as PANOLENS from "panolens";
+import React from 'react'
 
-console.log(PANOLENS);
-const panorama = new PANOLENS.ImagePanorama("photos/11.jpg");
-console.log(panorama);
-const viewer = new PANOLENS.Viewer({
-  container: document.querySelector("#IMAGE")
-});
-console.log(viewer);
-viewer.add(panorama);
-const Pano = () => {
+const Pano = (props) => {
+
+  const [panorama, setPano] = React.useState(new PANOLENS.ImagePanorama(`photos/${props.img_id
+    }.jpg`));
+
+  const [viewer, setViewer] = React.useState(new PANOLENS.Viewer({
+    container: document.querySelector(`#viewer_${props.img_id}`)
+  }));
+  viewer.add(panorama);
+
   return (
     <>
-      <p>IMAGE</p>
-      <div id="IMAGE" htmlstyle="height:100%">
-        {}
-      </div>
+      <div id={`viewer_${props.img_id}`} style={{ height: '100 %' }} />
     </>
   );
 };
