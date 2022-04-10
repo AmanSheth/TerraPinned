@@ -33,16 +33,16 @@
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     color: white;
-    font-size: 48px;
-    padding: 0px 24px;
+    font-size: 38px;
+    padding: auto;
     border: none;
     cursor: pointer;
     border-radius: 5px;
-    font-family: san-serif;
+    font-family: sans-serif;
 }
 
 .contained img {
     max-width: 200%;
-    height: auto;
+    height: 150%;
     filter: blur(10px);
 }
