@@ -33,7 +33,7 @@ export default class Picker extends React.Component<{ img_id: string }, {
 
     render(): React.ReactNode {
         return (<>
-            <a id="picker" className="Picker" />
+            <div id="picker" className="Picker" />
             <button className="square" onClick={() => {
                 this.setState({ loc: this.state.inner.getMarkerPosition() })
                 // alert(`${this.state.loc.lat}, ${this.state.loc.lng}`)
@@ -44,19 +44,23 @@ export default class Picker extends React.Component<{ img_id: string }, {
     }
 
     componentDidMount() {
-        this.setState({
-            inner: new LocationPicker('picker', {
-                setCurrentPosition: false,
-            }, {
-                center: {
-                    lat: umd.lat,
-                    lng: umd.lng,
-                },
-                zoom: 15, // You can set any google map options here, zoom defaults to 15
-                streetViewControl: false
-            }),
-            loc: umd
-        })
-        console.log("set picker innner")
+        const inner = new LocationPicker('picker', {
+            setCurrentPosition: false,
+        }, {
+            center: {
+                lat: umd.lat,
+                lng: umd.lng,
+            },
+            zoom: 15, // You can set any google map options here, zoom defaults to 15
+            streetViewControl: false
+        });
+        if (inner === null) {
+            console.log("inner init as null");
+        } else {
+            this.setState({
+                inner: inner,
+                loc: umd
+            })
+        }
     }
 }
