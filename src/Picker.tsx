@@ -20,9 +20,8 @@ export default class Picker extends React.Component<{}, {
 
     render(): React.ReactNode {
         return (<>
-            <div id="picker" className="Picker"></div>
+            <div id="picker" className="Picker"/>
             <button onClick={() => this.setState({ loc: this.state.inner.getMarkerPosition() })}>Confirm Position</button>
-            <span>{`${this.state.loc.lat}, ${this.state.loc.lng}`}</span>
         </>);
     }
 
