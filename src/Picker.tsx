@@ -43,6 +43,24 @@ export default class Picker extends React.Component<{ img_id: string }, {
         </>);
     }
 
+    points(dist) {
+        var threshold = 160;
+        var max_score = 500;
+        var step = 160;
+        var unit = 50;
+        if (dist < threshold) {
+            return max_score;
+        }
+        else {
+            var c = unit / step;
+            var neglin = (1 / unit) * (max_score + unit - c*x);
+            if(dist < 0) {
+                neglin = 0;
+            }
+            return unit * Math.floor(neglin);
+        }
+    }
+    
     componentDidMount() {
         this.setState({
             inner: new LocationPicker('picker', {
