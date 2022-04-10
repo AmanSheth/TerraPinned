@@ -1,11 +1,10 @@
 
 #picker div {
     position: fixed;
-    left: 5%; 
+    height:auto;
+    width: auto;
+    left: 10%; 
     bottom: 10%;
-    width: 200px;
-    height:200px;
-    background-color:lightblue;
     padding: 5px;
 }
 
