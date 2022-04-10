@@ -12,39 +12,45 @@ class Point {
   get y () { return this.y; }
 }
 class Level {
+  static config = JSON.parse(fs.open(config_path));
+
   // configurations for points
-  static max_score = config.max;
-  this.threshold = config.threshold;
-  this.unit = config.unit;
-  this.step = config.step;
+  static max_score = Level.config.max;
+  static threshold = Level.config.threshold;
+  static unit = Level.config.unit;
+  static step = Level.config.step;
   
+  // configurations for points
+  static max_score = Level.config.max;
+  static threshold = Level.config.threshold;
+  static unit = Level.config.unit;
+  static step = Level.config.step;
+
   constructor (id, linear) {
     data = JSON.parse(fs.open(string(config_path) + string(id) + ".json"));
-    config = JSON.parse(fs.open(config_path));
-
-    // configurations for points
-    this.max_score = config.max;
-    this.threshold = config.threshold;
-    this.unit = config.unit;
-    this.step = config.step;
 
     // configurations for 
-    this.c = this.threshold * this.threshold * this.max_score;
     this.location = data.loc;
     this.linear = linear;
   }
 
   getDist(point) {
-    var miles = this.haversineDistance(this.point, point, true);
-    return miles * 5280;
+    // var miles = this.haversineDistance(this.point, point, true);
+    // return miles * 5280;
+
+    var pt1 = new google.maps.LatLng(point.y, point.x);
+    var pt2 = new google.maps.LatLng(this.location.y, this.location.x);
+
+    var distance = google.maps.geometry.spherical.computeDistanceBetween(pt1,pt2);       
   }
 
+  // inverse square
   invsq(x) {
     var c = this.max_score * this.threshold ** 2 * this.unit ** -1;
     return c*x**(-2);
   }
 
-  // neg-linear
+  // negative linear
   neglin(x) {
     var c = this.unit / this.step;
     return (1 / this.unit) * (this.max_score + this.unit - c*x)
