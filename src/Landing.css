@@ -14,7 +14,7 @@
 .topbar img {
     max-width: 75%;
     max-height: 75%;
-    padding: .5%;
+    margin: 10px 10px;
     font-family: sans-serif;
     position: absolute;
     z-index: 2

@@ -4,7 +4,6 @@ import React from 'react'
 const Pano = (props) => {
 
   let src = "https://terpconnect.umd.edu/~vchari/geomd/" + props.img_id + ".jpg"
-  alert(src)
   const [panorama, setPano] = React.useState(new PANOLENS.ImagePanorama(src));
   
 

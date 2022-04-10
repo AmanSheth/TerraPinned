@@ -1,4 +1,9 @@
 .Picker {
-    width: 100px;
-    height: 100px;
+    position: fixed;
+    left: 5%; 
+    bottom: 5%;
+    width: 200px;
+    height:200px;
+    background-color:lightblue;
+    padding: 5px;
 }
