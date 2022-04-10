@@ -17,8 +17,8 @@ const points = (dist) => {
     }
     else {
         var c = unit / step;
-        var neglin = (1 / unit) * (max_score + unit - c*x);
-        if(dist < 0) {
+        var neglin = (1 / unit) * (max_score + unit - c*dist);
+        if(neglin < 0) {
             neglin = 0;
         }
         return unit * Math.floor(neglin);
@@ -42,7 +42,7 @@ export default class Picker extends React.Component<{ img_id: string }, {
                 // alert(`${this.state.loc.lat}, ${this.state.loc.lng}`)
                 console.log(`loc: (${this.state.loc.lat}, ${this.state.loc.lng})`)
                 const dist = google.maps.geometry.spherical.computeDistanceBetween(this.state.ans, this.state.loc)
-                alert("Points: " + points(dist));
+                alert("Points: " + points(3*dist));
             }}>Confirm Position</button>
         </>);
     }

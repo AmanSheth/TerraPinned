@@ -34,11 +34,11 @@
     -ms-transform: translate(-50%, -50%);
     color: white;
     font-size: 48px;
-    padding: 12px 24px;
+    padding: 0px 24px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
-    font-family: fantasy;
+    font-family: san-serif;
 }
 
 .contained img {
