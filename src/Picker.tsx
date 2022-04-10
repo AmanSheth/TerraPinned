@@ -33,7 +33,7 @@ export default class Picker extends React.Component<{ img_id: string }, {
 
     render(): React.ReactNode {
         return (<>
-            <div id="picker" className="Picker" />
+            <a id="picker" className="Picker" />
             <button className="square" onClick={() => {
                 this.setState({ loc: this.state.inner.getMarkerPosition() })
                 // alert(`${this.state.loc.lat}, ${this.state.loc.lng}`)
