@@ -29,13 +29,13 @@ class Level {
   }
 
   getDist(other) {
-    var miles = this.haversineDistance(this.point, other, true);
-    return miles * 5280;
+    // var miles = this.haversineDistance(this.point, other, true);
+    // return miles * 5280;
 
-    // var pt1 = new google.maps.LatLng(point.y, point.x);
-    // var pt2 = new google.maps.LatLng(this.location.y, this.location.x);
+    var pt1 = new google.maps.LatLng(point.y, point.x);
+    var pt2 = new google.maps.LatLng(this.location.y, this.location.x);
 
-    // var distance = google.maps.geometry.spherical.computeDistanceBetween(pt1,pt2);       
+    var distance = google.maps.geometry.spherical.computeDistanceBetween(pt1,pt2);       
   }
 
   // inverse square
@@ -107,8 +107,3 @@ class Level {
     return d;
   }
 }
-
-var x = new Level(5, true);
-// var other = new Point(-76.93726940190448, 38.99006706396276);
-// console.log(x.getPoints(other));
-console.log(x.getPoints(-76.93626941190448, 38.99006706396276));
