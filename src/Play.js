@@ -1,5 +1,5 @@
 // import logo from './logo.svg';
-import './Play.css';
+import './Landing.css';
 import Pano from './Pano'
 import Viewer from './Viewer'
 

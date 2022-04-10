@@ -12,9 +12,9 @@
 }
 
 .topbar img {
-    max-width: 50%;
-    max-height: 50%;
-    padding: 1%;
+    max-width: 75%;
+    max-height: 75%;
+    padding: .5%;
     font-family: sans-serif;
     position: absolute;
     z-index: 2
