@@ -20,7 +20,7 @@ export default function Landing() {
         </div>
         <div className="contained">
             <img src={src} alt="Blurry scene of unknown umd scene"/>
-            <button class="button" onClick={coursesPage}>PLAY!</button>
+            <button className="button" onClick={coursesPage}>PLAY!</button>
         </div>
     </div>);
     //navigate("./Play")
