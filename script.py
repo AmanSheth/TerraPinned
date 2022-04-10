@@ -1,7 +1,7 @@
 coord = map(float, input().split(", "))
 id = input()
 
-line = """ {
+line = r""" {
   \"id\": #{str(id)},
   \"loc\": {
     \"x\": #{str(coord[0])},
